@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "tellor"
+version = "0.3.8"
+description = "python wrapper for tellor decentralized oracle"
+authors = ["banteg <banteeg@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+web3 = "^5.4.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
