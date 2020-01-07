@@ -2,6 +2,8 @@
 
 *python wrapper for tellor decentalized oracle*
 
+[documentation](https://banteg.github.io/tellor/)
+
 ## installation
 
 ```
