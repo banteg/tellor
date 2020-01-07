@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tellor Python Tools &#8212; Tellor 0.3.8 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tellor package" href="tellor.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="tellor-python-tools">
+<h1>Tellor Python Tools<a class="headerlink" href="#tellor-python-tools" title="Permalink to this headline">¶</a></h1>
+<p>A collection of Python tools to interact with <a class="reference external" href="https://tellor.io/">Tellor</a> decentralized oracle.</p>
+<div class="section" id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>If you are running a local node, you can simply use <a class="reference internal" href="tellor.html#module-tellor.auto" title="tellor.auto"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tellor.auto</span></code></a> to get a wrapper instance configured for the network your node is on. Both mainnet and rinkeby are supported.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tellor.auto</span> <span class="kn">import</span> <span class="n">tellor</span>
+</pre></div>
+</div>
+<p>If your node uses a non-standard configuration or you use Infura, update the <code class="docutils literal notranslate"><span class="pre">WEB3_HTTP_PROVIDER_URI</span></code> environment variable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tellor</span><span class="o">.</span><span class="n">network</span>
+<span class="go">&lt;Network.MAINNET: 1&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tellor</span><span class="o">.</span><span class="n">address</span>
+<span class="go">&#39;0x0Ba45A8b5d5575935B8158a88C631E9F9C95a2e5&#39;</span>
+
+<span class="go"># Wei values transform to a readable form when printed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tellor</span><span class="o">.</span><span class="n">total_supply</span>
+<span class="go">520910000000000000000000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">tellor</span><span class="o">.</span><span class="n">total_supply</span><span class="p">)</span>
+<span class="go">520910 trb</span>
+
+<span class="go"># Disputes and oracle values are fully supported</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">tellor</span><span class="o">.</span><span class="n">get_dispute</span><span class="p">(</span><span class="n">tellor</span><span class="o">.</span><span class="n">dispute_count</span><span class="p">))</span>
+<span class="go">dispute_id = 19</span>
+<span class="go">executed = False</span>
+<span class="go">dispute_vote_passed = False</span>
+<span class="go">is_prop_fork = False</span>
+<span class="go">reported_miner = 0x103348C47fFc3254aFf761894e7C13cA0C680465</span>
+<span class="go">reporting_party = 0xbABca74dB0D4dBCb7EBC89728452CeAC807615A0</span>
+<span class="go">tally = 80352.476817699999998 trb</span>
+<span class="go">request_id = 3</span>
+<span class="go">timestamp = 1572377640</span>
+<span class="go">value = 187880</span>
+<span class="go">min_execution_date = 1572985087</span>
+<span class="go">number_of_votes = 2</span>
+<span class="go">block_number = 8836057</span>
+<span class="go">miner_slot = 4</span>
+<span class="go">quorum = 80352.476817699999998 trb</span>
+<span class="go">fee = 510 trb</span>
+<span class="go">can be executed in 2d19h16m in favor of reporter</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">tellor</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1572377640</span><span class="p">))</span>
+<span class="go">request_id = 3</span>
+<span class="go">timestamp = 1572377640</span>
+<span class="go">0 0x5522eCa38e7C376F96d29F963ae9eEAE14F27a47 20739</span>
+<span class="go">1 0xF1989cc4492Fe704f846c70Ff068fa554C904901 20739</span>
+<span class="go">2 0xe060aE2E078ffd811D9fc7d613976d6EFe7f071F 20739</span>
+<span class="go">3 0xFcEB7885efAEa565262e0e87CbDC1DCC8E0cCB4D 20739</span>
+<span class="go">4 0x103348C47fFc3254aFf761894e7C13cA0C680465 187880</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tellor.html">tellor package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tellor.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tellor.html#module-tellor.auto">tellor.auto module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tellor.html#module-tellor.constants">tellor.constants module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tellor.html#module-tellor.contract">tellor.contract module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tellor.html#module-tellor.dispute">tellor.dispute module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tellor.html#module-tellor.func_decoders">tellor.func_decoders module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tellor.html#module-tellor.log_decoders">tellor.log_decoders module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tellor.html#module-tellor.types">tellor.types module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tellor.html#module-tellor">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Tellor</a></h1>
+
+
+
+<p class="blurb">Tellor Python Tools</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tellor.html">tellor package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="tellor.html" title="next chapter">tellor package</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, banteg.
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

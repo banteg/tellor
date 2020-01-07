@@ -1,0 +1,612 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>tellor package &#8212; Tellor 0.3.8 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tellor Python Tools" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="tellor-package">
+<h1>tellor package<a class="headerlink" href="#tellor-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-tellor.auto">
+<span id="tellor-auto-module"></span><h2>tellor.auto module<a class="headerlink" href="#module-tellor.auto" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-tellor.constants">
+<span id="tellor-constants-module"></span><h2>tellor.constants module<a class="headerlink" href="#module-tellor.constants" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tellor.constants.Network">
+<em class="property">class </em><code class="descclassname">tellor.constants.</code><code class="descname">Network</code><a class="headerlink" href="#tellor.constants.Network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>An enumeration.</p>
+<dl class="attribute">
+<dt id="tellor.constants.Network.MAINNET">
+<code class="descname">MAINNET</code><em class="property"> = 1</em><a class="headerlink" href="#tellor.constants.Network.MAINNET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.constants.Network.RINKEBY">
+<code class="descname">RINKEBY</code><em class="property"> = 4</em><a class="headerlink" href="#tellor.constants.Network.RINKEBY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-tellor.contract">
+<span id="tellor-contract-module"></span><h2>tellor.contract module<a class="headerlink" href="#module-tellor.contract" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tellor.contract.Tellor">
+<em class="property">class </em><code class="descclassname">tellor.contract.</code><code class="descname">Tellor</code><span class="sig-paren">(</span><em>network: tellor.constants.Network</em><span class="sig-paren">)</span><a class="headerlink" href="#tellor.contract.Tellor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Tellor contract wrapper which implements most of the useful getters.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also access to the underlying web3 contract interface as a fallback.</p>
+</div>
+<dl class="method">
+<dt id="tellor.contract.Tellor.allowance">
+<code class="descname">allowance</code><span class="sig-paren">(</span><em>address</em>, <em>spender</em><span class="sig-paren">)</span> &#x2192; tellor.types.Tributes<a class="headerlink" href="#tellor.contract.Tellor.allowance" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>How many tributes spender is allowed to spend on behalf of address.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.balance_of">
+<code class="descname">balance_of</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span> &#x2192; tellor.types.Tributes<a class="headerlink" href="#tellor.contract.Tellor.balance_of" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Tribute balance of address in wei.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.balance_of_at">
+<code class="descname">balance_of_at</code><span class="sig-paren">(</span><em>address</em>, <em>block_number</em><span class="sig-paren">)</span> &#x2192; tellor.types.Tributes<a class="headerlink" href="#tellor.contract.Tellor.balance_of_at" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Tribute balance snapshot of address in wei.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.contract.Tellor.current_variables">
+<code class="descname">current_variables</code><a class="headerlink" href="#tellor.contract.Tellor.current_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current contract state from miner’s perspective
+<a class="reference internal" href="#tellor.types.CurrentVariables" title="tellor.types.CurrentVariables"><code class="xref py py-class docutils literal notranslate"><span class="pre">CurrentVariables</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.decode_func">
+<code class="descname">decode_func</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span> &#x2192; Tuple[str, dict]<a class="headerlink" href="#tellor.contract.Tellor.decode_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes transaction input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Function name and arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.decode_logs">
+<code class="descname">decode_logs</code><span class="sig-paren">(</span><em>logs</em><span class="sig-paren">)</span> &#x2192; List[dict]<a class="headerlink" href="#tellor.contract.Tellor.decode_logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes logs with <code class="docutils literal notranslate"><span class="pre">topics</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code> to events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Events containing <code class="docutils literal notranslate"><span class="pre">event</span></code> and <code class="docutils literal notranslate"><span class="pre">args</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.contract.Tellor.deity">
+<code class="descname">deity</code><a class="headerlink" href="#tellor.contract.Tellor.deity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Address which controls the backdoor to change the implementation without the governance process.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.did_mine">
+<code class="descname">did_mine</code><span class="sig-paren">(</span><em>challenge</em>, <em>miner</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#tellor.contract.Tellor.did_mine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether a miner has mined a certain challenge already.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.did_vote">
+<code class="descname">did_vote</code><span class="sig-paren">(</span><em>dispute_id</em>, <em>address</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#tellor.contract.Tellor.did_vote" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return whether an address has cast a vote in a dispute.</p>
+</dd>
+</dl>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To get an actual vote power, use <a class="reference internal" href="#tellor.contract.Tellor.balance_of_at" title="tellor.contract.Tellor.balance_of_at"><code class="xref py py-meth docutils literal notranslate"><span class="pre">balance_of_at()</span></code></a> with <code class="docutils literal notranslate"><span class="pre">block_number</span></code> of the dispute.
+To figure out whether the vote was for or against, well, you have to resort to events.</p>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.contract.Tellor.difficulty">
+<code class="descname">difficulty</code><a class="headerlink" href="#tellor.contract.Tellor.difficulty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current network difficulty.
+The difficulty is automatically adjusted for a target of 10-minute block time.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.contract.Tellor.dispute_count">
+<code class="descname">dispute_count</code><a class="headerlink" href="#tellor.contract.Tellor.dispute_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ever-increasing number of disputes across the network.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.contract.Tellor.dispute_fee">
+<code class="descname">dispute_fee</code><a class="headerlink" href="#tellor.contract.Tellor.dispute_fee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deposit a reporter must put to open a dispute.
+If they lose the case, this deposit is forfeited and is given to the miner.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.get_dispute">
+<code class="descname">get_dispute</code><span class="sig-paren">(</span><em>dispute_id</em><span class="sig-paren">)</span> &#x2192; Optional[tellor.dispute.Dispute]<a class="headerlink" href="#tellor.contract.Tellor.get_dispute" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Detailed info about a <a class="reference internal" href="#tellor.dispute.Dispute" title="tellor.dispute.Dispute"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dispute</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.get_dispute_by">
+<code class="descname">get_dispute_by</code><span class="sig-paren">(</span><em>miner</em>, <em>request_id</em>, <em>timestamp</em><span class="sig-paren">)</span> &#x2192; Optional[tellor.dispute.Dispute]<a class="headerlink" href="#tellor.contract.Tellor.get_dispute_by" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>miner</strong> – Disputed miner address</p></li>
+<li><p><strong>request_id</strong> – Disputed request id</p></li>
+<li><p><strong>timestamp</strong> – Disputed value timestamp</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Detailed info about a <a class="reference internal" href="#tellor.dispute.Dispute" title="tellor.dispute.Dispute"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dispute</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.get_logs">
+<code class="descname">get_logs</code><span class="sig-paren">(</span><em>**kwds</em><span class="sig-paren">)</span> &#x2192; List[dict]<a class="headerlink" href="#tellor.contract.Tellor.get_logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get contract events by querying logs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwds</strong> – Additional args to <code class="docutils literal notranslate"><span class="pre">w3.eth.getLogs</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Decoded events from matching logs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><em>request_id</em>, <em>timestamp</em><span class="sig-paren">)</span> &#x2192; Optional[tellor.dispute.Value]<a class="headerlink" href="#tellor.contract.Tellor.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request_id</strong> – value request id</p></li>
+<li><p><strong>timestamp</strong> – value timestamp</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Detailed info about a <a class="reference internal" href="#tellor.dispute.Value" title="tellor.dispute.Value"><code class="xref py py-class docutils literal notranslate"><span class="pre">Value</span></code></a> with miners and the values they submitted.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.contract.Tellor.implementation">
+<code class="descname">implementation</code><a class="headerlink" href="#tellor.contract.Tellor.implementation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Address of the current contract implementation where all calls are delegated to.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.contract.Tellor.owner">
+<code class="descname">owner</code><a class="headerlink" href="#tellor.contract.Tellor.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Address which is the beneficiary of the 10% devshare.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.contract.Tellor.slot_progress">
+<code class="descname">slot_progress</code><a class="headerlink" href="#tellor.contract.Tellor.slot_progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of already mined slots in the current blocks. This value can be 0–4.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.contract.Tellor.staker_count">
+<code class="descname">staker_count</code><a class="headerlink" href="#tellor.contract.Tellor.staker_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current number of active stakers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tellor.contract.Tellor.staker_status">
+<code class="descname">staker_status</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span> &#x2192; tellor.types.StakerStatus<a class="headerlink" href="#tellor.contract.Tellor.staker_status" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#tellor.types.StakerStatus" title="tellor.types.StakerStatus"><code class="xref py py-class docutils literal notranslate"><span class="pre">StakerStatus</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.contract.Tellor.total_supply">
+<code class="descname">total_supply</code><a class="headerlink" href="#tellor.contract.Tellor.total_supply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total supply of tributes. New tributes are printed every block.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-tellor.dispute">
+<span id="tellor-dispute-module"></span><h2>tellor.dispute module<a class="headerlink" href="#module-tellor.dispute" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tellor.dispute.Dispute">
+<em class="property">class </em><code class="descclassname">tellor.dispute.</code><code class="descname">Dispute</code><span class="sig-paren">(</span><em>dispute_id: int</em>, <em>hash: bytes</em>, <em>executed: bool</em>, <em>dispute_vote_passed: bool</em>, <em>is_prop_fork: bool</em>, <em>reported_miner: str</em>, <em>reporting_party: str</em>, <em>proposed_fork_address: str</em>, <em>tally: tellor.types.Tributes</em>, <em>request_id: int</em>, <em>timestamp: int</em>, <em>value: int</em>, <em>min_execution_date: int</em>, <em>number_of_votes: int</em>, <em>block_number: int</em>, <em>miner_slot: int</em>, <em>quorum: tellor.types.Tributes</em>, <em>fee: tellor.types.Tributes</em><span class="sig-paren">)</span><a class="headerlink" href="#tellor.dispute.Dispute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Detailed info about a dispute.</p>
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.dispute_id">
+<code class="descname">dispute_id</code><a class="headerlink" href="#tellor.dispute.Dispute.dispute_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dispute id.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.hash">
+<code class="descname">hash</code><a class="headerlink" href="#tellor.dispute.Dispute.hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dispute hash, i.e. <code class="docutils literal notranslate"><span class="pre">keccak256(miner+request_id+timestamp)</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.executed">
+<code class="descname">executed</code><a class="headerlink" href="#tellor.dispute.Dispute.executed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the dispute has been finalized with <code class="docutils literal notranslate"><span class="pre">tallyVotes</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.dispute_vote_passed">
+<code class="descname">dispute_vote_passed</code><a class="headerlink" href="#tellor.dispute.Dispute.dispute_vote_passed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the dispute ended in favour of reporter.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.is_prop_fork">
+<code class="descname">is_prop_fork</code><a class="headerlink" href="#tellor.dispute.Dispute.is_prop_fork" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the fork to another implementation contract is proposed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.reported_miner">
+<code class="descname">reported_miner</code><a class="headerlink" href="#tellor.dispute.Dispute.reported_miner" title="Permalink to this definition">¶</a></dt>
+<dd><p>The miner who is disputed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.reporting_party">
+<code class="descname">reporting_party</code><a class="headerlink" href="#tellor.dispute.Dispute.reporting_party" title="Permalink to this definition">¶</a></dt>
+<dd><p>The reporter who opened the dispute.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.proposed_fork_address">
+<code class="descname">proposed_fork_address</code><a class="headerlink" href="#tellor.dispute.Dispute.proposed_fork_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Address of proposed implementation contract.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.tally">
+<code class="descname">tally</code><a class="headerlink" href="#tellor.dispute.Dispute.tally" title="Permalink to this definition">¶</a></dt>
+<dd><p>Difference of votes for and against.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.request_id">
+<code class="descname">request_id</code><a class="headerlink" href="#tellor.dispute.Dispute.request_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request id of the disputed value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.timestamp">
+<code class="descname">timestamp</code><a class="headerlink" href="#tellor.dispute.Dispute.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Timestamp of the disputed value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.value">
+<code class="descname">value</code><a class="headerlink" href="#tellor.dispute.Dispute.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disputed value submitted by the miner.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.min_execution_date">
+<code class="descname">min_execution_date</code><a class="headerlink" href="#tellor.dispute.Dispute.min_execution_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>When the votes can be tallied. Disputes last for exactly 7 days.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.number_of_votes">
+<code class="descname">number_of_votes</code><a class="headerlink" href="#tellor.dispute.Dispute.number_of_votes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of voters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.block_number">
+<code class="descname">block_number</code><a class="headerlink" href="#tellor.dispute.Dispute.block_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Block number when the reported value was submitted. Voting power comes from balance snapshot at this block.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.miner_slot">
+<code class="descname">miner_slot</code><a class="headerlink" href="#tellor.dispute.Dispute.miner_slot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Miner slot where the disputed value is located. Use <a class="reference internal" href="#tellor.dispute.Value" title="tellor.dispute.Value"><code class="xref py py-class docutils literal notranslate"><span class="pre">Value</span></code></a> to see adjacent values.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.quorum">
+<code class="descname">quorum</code><a class="headerlink" href="#tellor.dispute.Dispute.quorum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sum of votes for and against.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.fee">
+<code class="descname">fee</code><a class="headerlink" href="#tellor.dispute.Dispute.fee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reporter deposit. They get it back if they win the dispute or lose it to the disputed miner otherwise.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.nays">
+<code class="descname">nays</code><a class="headerlink" href="#tellor.dispute.Dispute.nays" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Dispute.yays">
+<code class="descname">yays</code><a class="headerlink" href="#tellor.dispute.Dispute.yays" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tellor.dispute.Value">
+<em class="property">class </em><code class="descclassname">tellor.dispute.</code><code class="descname">Value</code><span class="sig-paren">(</span><em>request_id: int</em>, <em>timestamp: int</em>, <em>miners: List[str] = None</em>, <em>values: List[int] = None</em><span class="sig-paren">)</span><a class="headerlink" href="#tellor.dispute.Value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="tellor.dispute.Value.miners">
+<code class="descname">miners</code><em class="property"> = None</em><a class="headerlink" href="#tellor.dispute.Value.miners" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.dispute.Value.values">
+<code class="descname">values</code><em class="property"> = None</em><a class="headerlink" href="#tellor.dispute.Value.values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-tellor.func_decoders">
+<span id="tellor-func-decoders-module"></span><h2>tellor.func_decoders module<a class="headerlink" href="#module-tellor.func_decoders" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tellor.func_decoders.decode_fn_input">
+<code class="descclassname">tellor.func_decoders.</code><code class="descname">decode_fn_input</code><span class="sig-paren">(</span><em>data</em>, <em>decoders</em><span class="sig-paren">)</span><a class="headerlink" href="#tellor.func_decoders.decode_fn_input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="tellor.func_decoders.decode_func_with_fallback">
+<code class="descclassname">tellor.func_decoders.</code><code class="descname">decode_func_with_fallback</code><span class="sig-paren">(</span><em>abis_to_try</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#tellor.func_decoders.decode_func_with_fallback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="tellor.func_decoders.get_func_decoders">
+<code class="descclassname">tellor.func_decoders.</code><code class="descname">get_func_decoders</code><span class="sig-paren">(</span><em>contract</em><span class="sig-paren">)</span><a class="headerlink" href="#tellor.func_decoders.get_func_decoders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-tellor.log_decoders">
+<span id="tellor-log-decoders-module"></span><h2>tellor.log_decoders module<a class="headerlink" href="#module-tellor.log_decoders" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tellor.log_decoders.decode_log_with_fallback">
+<code class="descclassname">tellor.log_decoders.</code><code class="descname">decode_log_with_fallback</code><span class="sig-paren">(</span><em>abis_to_try</em>, <em>log</em><span class="sig-paren">)</span><a class="headerlink" href="#tellor.log_decoders.decode_log_with_fallback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="tellor.log_decoders.decode_logs">
+<code class="descclassname">tellor.log_decoders.</code><code class="descname">decode_logs</code><span class="sig-paren">(</span><em>logs</em>, <em>decoders</em><span class="sig-paren">)</span><a class="headerlink" href="#tellor.log_decoders.decode_logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="tellor.log_decoders.get_log_decoders">
+<code class="descclassname">tellor.log_decoders.</code><code class="descname">get_log_decoders</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tellor.log_decoders.get_log_decoders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-tellor.types">
+<span id="tellor-types-module"></span><h2>tellor.types module<a class="headerlink" href="#module-tellor.types" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tellor.types.CurrentVariables">
+<em class="property">class </em><code class="descclassname">tellor.types.</code><code class="descname">CurrentVariables</code><span class="sig-paren">(</span><em>challenge: bytes</em>, <em>request: int</em>, <em>difficulty: int</em>, <em>query: str</em>, <em>granularity: int</em>, <em>tip: int</em><span class="sig-paren">)</span><a class="headerlink" href="#tellor.types.CurrentVariables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="tellor.types.StakerStatus">
+<em class="property">class </em><code class="descclassname">tellor.types.</code><code class="descname">StakerStatus</code><a class="headerlink" href="#tellor.types.StakerStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
+<p>An enumeration.</p>
+<dl class="attribute">
+<dt id="tellor.types.StakerStatus.DISPUTED">
+<code class="descname">DISPUTED</code><em class="property"> = 3</em><a class="headerlink" href="#tellor.types.StakerStatus.DISPUTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.types.StakerStatus.NOT_STAKED">
+<code class="descname">NOT_STAKED</code><em class="property"> = 0</em><a class="headerlink" href="#tellor.types.StakerStatus.NOT_STAKED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.types.StakerStatus.STAKED">
+<code class="descname">STAKED</code><em class="property"> = 1</em><a class="headerlink" href="#tellor.types.StakerStatus.STAKED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.types.StakerStatus.WITHDRAWING">
+<code class="descname">WITHDRAWING</code><em class="property"> = 2</em><a class="headerlink" href="#tellor.types.StakerStatus.WITHDRAWING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tellor.types.Tributes">
+<em class="property">class </em><code class="descclassname">tellor.types.</code><code class="descname">Tributes</code><a class="headerlink" href="#tellor.types.Tributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tellor.types.Wei" title="tellor.types.Wei"><code class="xref py py-class docutils literal notranslate"><span class="pre">tellor.types.Wei</span></code></a></p>
+<dl class="attribute">
+<dt id="tellor.types.Tributes.unit">
+<code class="descname">unit</code><em class="property"> = 'trb'</em><a class="headerlink" href="#tellor.types.Tributes.unit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tellor.types.Wei">
+<em class="property">class </em><code class="descclassname">tellor.types.</code><code class="descname">Wei</code><a class="headerlink" href="#tellor.types.Wei" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<dl class="classmethod">
+<dt id="tellor.types.Wei.from_eth">
+<em class="property">classmethod </em><code class="descname">from_eth</code><span class="sig-paren">(</span><em>eth: decimal.Decimal</em><span class="sig-paren">)</span><a class="headerlink" href="#tellor.types.Wei.from_eth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tellor.types.Wei.to_eth">
+<code class="descname">to_eth</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; decimal.Decimal<a class="headerlink" href="#tellor.types.Wei.to_eth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="tellor.types.Wei.unit">
+<code class="descname">unit</code><em class="property"> = 'eth'</em><a class="headerlink" href="#tellor.types.Wei.unit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-tellor">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tellor" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Tellor</a></h1>
+
+
+
+<p class="blurb">Tellor Python Tools</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">tellor package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tellor.auto">tellor.auto module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tellor.constants">tellor.constants module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tellor.contract">tellor.contract module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tellor.dispute">tellor.dispute module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tellor.func_decoders">tellor.func_decoders module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tellor.log_decoders">tellor.log_decoders module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tellor.types">tellor.types module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tellor">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Tellor Python Tools</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, banteg.
+      
+      |
+      <a href="_sources/tellor.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
